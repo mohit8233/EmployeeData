@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:5000/api/employees"
+const BASE_URL = "https://employeedata-k3li.onrender.com/api/employees"
 
 
 export const getEmployee = async(params = {})=>{
