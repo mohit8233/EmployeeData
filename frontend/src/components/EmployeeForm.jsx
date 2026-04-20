@@ -73,7 +73,7 @@ export const EmployeeForm = ({ refreshData, editEmployee, setEditEmployee }) => 
           } else {
             alert(createApi.message)
           }
- 
+
           setObj({
             name: "",
             email: "",
