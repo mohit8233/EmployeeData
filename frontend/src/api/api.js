@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:5000/api/employees"
+const BASE_URL = "https://employeedata-3.onrender.com/api/employees"
 // const BASE_URL = "https://employeedata-89u4.onrender.com/api/employees"
 
 
