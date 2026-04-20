@@ -17,8 +17,8 @@ export const EmployeeList = ({ refresh, setEditEmployee, refreshData }) => {
     const fetchEmployee = async () => {
         try {
             const res = await getEmployee(params);
-            setEmployee(res.data || res.employees || res || []);
-            setTotalPage(res.pagination?.totalPage || 1);
+            setEmployee(res.data || res.employees  || []);
+            setTotalPage(res.pagination?.totalPages || 1);
         } catch (error) {
             console.log(error);
 
@@ -57,7 +57,7 @@ export const EmployeeList = ({ refresh, setEditEmployee, refreshData }) => {
                         type="text"
                         placeholder="Enter Either name or department"
                         onChange={(e) => {
-                           
+
                             setParams({ ...params, search: e.target.value, page: 1 });
                         }}
                         className="w-full md:w-72 border border-gray-300 rounded-lg px-4 py-2.5 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -140,10 +140,39 @@ export const EmployeeList = ({ refresh, setEditEmployee, refreshData }) => {
                 </div>
 
                 {/* pagination ke liye ready */}
-                <div className="flex justify-center mt-8">
-                    <p className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md">
-                        Total Pages: {totalPage}
+                <div className="flex justify-center items-center gap-4 mt-8">
+
+                    {/* Prev Button */}
+                    <button
+                        disabled={params.page === 1}
+                        onClick={() => setParams({ ...params, page: params.page - 1 })}
+                        className={`px-4 py-2 rounded-lg font-medium transition 
+      ${params.page === 1
+                                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                                : "bg-blue-500 text-white hover:bg-blue-600 shadow-md"
+                            }`}
+                    >
+                        ⬅ Prev
+                    </button>
+
+                    {/* Page Info */}
+                    <p className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg">
+                        Page {params.page} / {totalPage}
                     </p>
+
+                    {/* Next Button */}
+                    <button
+                        disabled={params.page === totalPage}
+                        onClick={() => setParams({ ...params, page: params.page + 1 })}
+                        className={`px-4 py-2 rounded-lg font-medium transition 
+      ${params.page === totalPage
+                                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                                : "bg-indigo-500 text-white hover:bg-indigo-600 shadow-md"
+                            }`}
+                    >
+                        Next ➡
+                    </button>
+
                 </div>
             </div>
         </div>
