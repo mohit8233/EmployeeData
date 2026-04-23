@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { createEmployee, updateEmployee } from "../api/api"
+import { createEmployee, updateEmployee } from "../api/api.js"
 
 export const EmployeeForm = ({ refreshData, editEmployee, setEditEmployee }) => {
 

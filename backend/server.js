@@ -3,6 +3,7 @@ import { connectDb } from './config/db.js';
 import dotenv from 'dotenv';
 import cors from 'cors'
 import { employeeRouter } from './routes/employeeRoutes.js';
+import { userRouter } from './routes/authRoutes.js';
 dotenv.config()
 
 const app = express();
@@ -12,7 +13,7 @@ app.use(cors());
 await connectDb();
 
 app.use("/api/employees" ,employeeRouter)
-
+app.use("/api/authRoutes", userRouter)
 const PORT = process.env.PORT;
 app.listen(PORT, ()=>{
     console.log(`server is running ${PORT}`)
