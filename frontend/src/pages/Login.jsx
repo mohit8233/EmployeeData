@@ -24,7 +24,7 @@ const Login = () => {
 
     loginUser(user)
     .then((loginApi)=>{
-      if(loginApi.status){
+      if(loginApi.data.status){
         alert(loginApi.data.message|| loginApi.status)
            
 
