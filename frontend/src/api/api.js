@@ -1,7 +1,7 @@
 import axios from "axios";
 const BASE_URL = "https://employeedata-2.onrender.com/api/employees"
 
-
+const AUTH_URL = "http://localhost:8080/api/authRoutes"
 
 
 export const getEmployee = async(params = {})=>{
@@ -25,3 +25,17 @@ export const updateEmployee = (id, data) => {
 export const deleteEmployee = (id) => {
   return axios.delete(`${BASE_URL}/deleteEmployee/${id}`);
 };
+
+
+// ================= AUTH =================//
+// Register //
+
+export const registerUser = (data)=>{
+  return axios.post(`${AUTH_URL}/register`,data)
+}
+
+// Login //
+
+export const loginUser = (data)=>{
+  return axios.post(`${AUTH_URL}/login`, data)
+}
