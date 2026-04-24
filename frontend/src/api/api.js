@@ -2,6 +2,8 @@ import axios from "axios";
 const BASE_URL = "https://employeedata-2.onrender.com/api/employees"
 
 const AUTH_URL = "https://employeedata-2.onrender.com/api/authRoutes"
+// const AUTH_URL = "https://employeedata-2.onrender.com/api/authRoutes"
+
 
 
 export const getEmployee = async(params = {})=>{
