@@ -4,7 +4,7 @@ import { loginUser } from "../api/api";
 
 
 const Login = () => {
-  const [user, setUser] = useState({
+  const [users, setUsers] = useState({
     email: "",
     password: "",
   })
@@ -13,8 +13,8 @@ const Login = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setUser({
-      ...user,
+    setUsers({
+      ...users,
       [name]: value
     })
   }
@@ -22,19 +22,17 @@ const Login = () => {
   const handleSubmit = (e)=>{
     e.preventDefault();
 
-    loginUser(user)
+    loginUser(users)
     .then((loginApi)=>{
+       console.log(loginApi.data);
       if(loginApi.data.status){
         alert(loginApi.data.message|| loginApi.status)
            
 
-        localStorage.setItem("token", loginApi.data.token);
-          localStorage.setItem(
-            "currentUser",
-            JSON.stringify(loginApi.data.user)
-          );
+        localStorage.setItem("token", loginApi.data.data.token);
+         
 
-        setUser({
+        setUsers({
           email:"",
           password:""
         })
@@ -69,7 +67,7 @@ const Login = () => {
             <input
               type="email"
               name="email"
-              value={user.email}
+              value={users.email}
               placeholder="Enter your email"
               onChange={handleChange}
               className="w-full border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
@@ -84,7 +82,7 @@ const Login = () => {
             <input
               type="password"
               name="password"
-              value={user.password}
+              value={users.password}
               placeholder="Enter your password"
               onChange={handleChange}
               className="w-full border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"

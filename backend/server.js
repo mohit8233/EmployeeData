@@ -1,9 +1,10 @@
 import express from 'express'
 import { connectDb } from './config/db.js';
-import dotenv from 'dotenv';
+
 import cors from 'cors'
 import { employeeRouter } from './routes/employeeRoutes.js';
 import { userRouter } from './routes/authRoutes.js';
+import dotenv from 'dotenv';
 dotenv.config()
 
 const app = express();
