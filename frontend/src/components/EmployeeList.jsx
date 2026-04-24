@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import { deleteEmployee, getEmployee } from "../api/api";
+import { useNavigate } from "react-router-dom";
 
 export const EmployeeList = ({ refresh, setEditEmployee, refreshData }) => {
 
     const [employee, setEmployee] = useState([]);
     const [totalPage, setTotalPage] = useState(1);
-
+const navigate = useNavigate()
     const [params, setParams] = useState({
         search: "",
         sortBy: "",
@@ -29,6 +30,13 @@ export const EmployeeList = ({ refresh, setEditEmployee, refreshData }) => {
     }, [params, refresh])
 
     const handleDelete = (id) => {
+      
+        const token = localStorage.getItem("token");
+        if(!token){
+            alert("Login First");
+            navigate("/login")
+        }
+         
         deleteEmployee(id)
             .then((deleteApi) => {
                 if (deleteApi.status) {
