@@ -1,79 +1,3 @@
-// import { useState } from "react"
-// import { registerUser } from "../api/api";
-// import { useNavigate } from "react-router-dom";
-
-
-// export const SignUp = () => {
-
-//     const [obj, setObj] = useState({
-//         name: "",
-//         email: "",
-//         password: ""
-//     })
-//     const navigate = useNavigate();
-
-//     const handleChange = (e) => {
-//         const { name, value } = e.target;
-
-//         setObj({
-//             ...obj,
-
-//             [name]: value
-//         })
-
-//     }
-
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-
-//         registerUser(obj)
-//             .then((registerApi) => {
-//                 if (registerApi.status) {
-//                     alert(registerApi.data.msg || registerApi.status)
-
-//                     setObj({
-//                         name: "",
-//                         email: "",
-//                         password: ""
-//                     })
-//                     navigate("/Login")
-//                 } else {
-//                     alert(registerApi.message)
-//                 }
-
-//             })
-//             .catch((error) => {
-//                 alert(
-//                     error.response?.data?.msg ||
-//                     error.response?.data?.message ||
-//                     "Register failed"
-//                 );
-//             });
-
-
-//     }
-
-
-//     return (
-//         <div>
-//             <div>
-//                 <h1>Employee SignUp</h1>
-//                 <form onSubmit={handleSubmit}>
-//                     <input type="text" name="name" value={obj.name} placeholder="" onChange={handleChange} />
-//                     <input type="email" name="email" value={obj.email} placeholder="" onChange={handleChange} />
-//                     <input type="text" name="password" value={obj.password} placeholder="" onChange={handleChange} />
-//                     <button type="submit">Register</button>
-//                 </form>
-//             </div>
-//         </div>
-//     )
-// }
-
-
-
-
-
-
 
 
 import { useState } from "react";
@@ -113,14 +37,13 @@ export const SignUp = () => {
                         password: ""
                     });
 
-                    navigate("/Login");
+                    navigate("/login");
                 } else {
                     alert(registerApi.message);
                 }
             })
             .catch((error) => {
                 alert(
-                    error.response?.data?.msg ||
                     error.response?.data?.message ||
                     "Register failed"
                 );
@@ -195,7 +118,7 @@ export const SignUp = () => {
                 <p className="text-center text-slate-600 mt-6">
                     Already have an account?{" "}
                     <Link
-                        to="/Login"
+                        to="/login"
                         className="text-blue-600 font-semibold hover:underline"
                     >
                         Login

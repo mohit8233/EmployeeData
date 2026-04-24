@@ -19,7 +19,7 @@ export const Header = () => {
         <Link to="/">Home</Link>
         <Link to="/employee">Employee</Link>
 
-        {/* 👉 Sirf Login */}
+        {/*  Login */}
         <Link to="/signup">Login</Link>
       </div>
     </header>

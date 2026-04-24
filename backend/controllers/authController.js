@@ -15,7 +15,7 @@ export const registerUser = async(req,res)=>{
         }
 
         const existUser = await User.findOne({email});
-        if(existUser === true){
+        if(existUser){
             return res.status(400).json({
                 status: false,
                 message: "User already register"
@@ -67,7 +67,7 @@ export const loginUser = async (req,res)=>{
                 message: "Invalid password"
          })
     }
-    const tokan = jwt.sign({id: user._id, email: user.email}, process.env.JWT_SECRET_TOKEN);
+    const token = jwt.sign({id: user._id, email: user.email}, process.env.JWT_SECRET_TOKEN);
     return res.status(200).json({
         status: true,
         message: "User login Successfully",
