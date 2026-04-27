@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
 import EmployeePage from "./pages/EmployeePage";
 import { Dashboard } from "./pages/Dashboard";
+import { Profile } from "./pages/Profile";
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/employee" element={<EmployeePage />} />
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/profile"  element={<Profile/>}/>
       </Routes>
     </>
   );

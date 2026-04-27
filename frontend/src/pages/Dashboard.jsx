@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -64,7 +64,7 @@ export const Dashboard = () => {
 
           <div className="bg-white p-5 rounded-xl shadow">
             <h2 className="text-lg font-semibold">Total Employees</h2>
-            <p className="text-2xl font-bold text-blue-600 mt-2">--</p>
+            <p className="text-2xl font-bold text-blue-600 mt-2">{employee}</p>
           </div>
 
           <div className="bg-white p-5 rounded-xl shadow">

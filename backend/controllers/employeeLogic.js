@@ -200,9 +200,7 @@ export const deleteEmployee = async (req,res)=>{
       });
     }
 
-    const deleteEmployee = await Employee.findByIdAndDelete(id,req.body,{
-        new: true
-    })
+    const deleteEmployee = await Employee.findByIdAndDelete(id)
 
     return res.json({
         status:true,
