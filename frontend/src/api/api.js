@@ -21,8 +21,9 @@ export const createEmployee = (data) => {
 
   return axios.post(`${BASE_URL}/create`, data, {
     headers: {
-      Authorization: token,
+      token: token,
     },
+
   });
 };
 
@@ -32,8 +33,9 @@ export const updateEmployee = (id, data) => {
 
   return axios.patch(`${BASE_URL}/updatePartial/${id}`, data, {
     headers: {
-      Authorization: token,
+      token: token,
     },
+
   });
 };
 
@@ -43,8 +45,9 @@ export const deleteEmployee = (id) => {
 
   return axios.delete(`${BASE_URL}/deleteEmployee/${id}`, {
     headers: {
-      Authorization: token,
+      token: token,
     },
+
   });
 };
 
