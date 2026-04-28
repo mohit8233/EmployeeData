@@ -15,25 +15,25 @@ export const EmployeeList = ({ refresh, setEditEmployee, refreshData }) => {
     limit: 5,
   });
 
-  const fetchEmployee = async () => {
-    try {
-      const res = await getEmployee(params);
+const fetchEmployee = async () => {
+  try {
+    const res = await getEmployee(params);
 
-      console.log("Employee Response:", res);
+    console.log("GET Employee Response:", res);
 
-      if (res.status) {
-        setEmployee(res.data || []);
-        setTotalPage(res.pagination?.totalPages || 1);
-      } else {
-        setEmployee([]);
-        setTotalPage(1);
-        alert(res.message);
-      }
-    } catch (error) {
-      console.log(error);
+    if (res.status === true) {
+      setEmployee(res.data || []);
+      setTotalPage(res.pagination?.totalPages || 1);
+    } else {
       setEmployee([]);
+      setTotalPage(1);
+      alert(res.message || "Employee not found");
     }
-  };
+  } catch (error) {
+    console.log("GET Error:", error);
+    setEmployee([]);
+  }
+};
 
   useEffect(() => {
     fetchEmployee();

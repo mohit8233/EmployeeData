@@ -10,8 +10,16 @@ const AUTH_URL = "https://employeedata-lvqe.onrender.com/api/authRoutes";
 
 // GET
 export const getEmployee = async (params = {}) => {
+  const token = localStorage.getItem("token");
+
   const query = new URLSearchParams(params).toString();
-  const res = await fetch(`${BASE_URL}/getEmployee?${query}`);
+
+  const res = await fetch(`${BASE_URL}/getEmployee?${query}`, {
+    headers: {
+      token: token,
+    },
+  });
+
   return res.json();
 };
 
